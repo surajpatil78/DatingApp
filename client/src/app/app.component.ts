@@ -21,10 +21,13 @@ export class AppComponent implements OnInit {
   setCurrentUser(){
     var tempvr = localStorage.getItem("user");
     if (tempvr == null){
-      tempvr = '{}';
+      //console.log('in null check');
+      this.accountService.setCurrentUser(null as any);
     }
-    const user: User = JSON.parse(tempvr);
-    this.accountService.setCurrentUser(user);
+    else{
+      const usee = JSON.parse(tempvr);
+      this.accountService.setCurrentUser(usee);
+    }
   }
   
 }
